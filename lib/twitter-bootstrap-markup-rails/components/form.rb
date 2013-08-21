@@ -1,15 +1,16 @@
 module Twitter::Bootstrap::Markup::Rails::Components
   class Form < Base
-    autoload :InputField,   'twitter-bootstrap-markup-rails/components/form/input_field'
-    autoload :NumberField,   'twitter-bootstrap-markup-rails/components/form/number_field'
-    autoload :TextArea,     'twitter-bootstrap-markup-rails/components/form/text_area'
-    autoload :Label,        'twitter-bootstrap-markup-rails/components/form/label'
-    autoload :RadioButton,  'twitter-bootstrap-markup-rails/components/form/radio_button'
-    autoload :Select,       'twitter-bootstrap-markup-rails/components/form/select'
-    autoload :CheckBox,     'twitter-bootstrap-markup-rails/components/form/check_box'
-    autoload :FileField,    'twitter-bootstrap-markup-rails/components/form/file_field'
-    autoload :Button,       'twitter-bootstrap-markup-rails/components/form/button'
-    autoload :ControlGroup, 'twitter-bootstrap-markup-rails/components/form/control_group'
+    autoload :InputField                    , 'twitter-bootstrap-markup-rails/components/form/input_field'
+    autoload :NumberField                   , 'twitter-bootstrap-markup-rails/components/form/number_field'
+    autoload :TelephoneWithCountryCodeField , 'twitter-bootstrap-markup-rails/components/form/telephone_with_country_code_field'
+    autoload :TextArea                      , 'twitter-bootstrap-markup-rails/components/form/text_area'
+    autoload :Label                         , 'twitter-bootstrap-markup-rails/components/form/label'
+    autoload :RadioButton                   , 'twitter-bootstrap-markup-rails/components/form/radio_button'
+    autoload :Select                        , 'twitter-bootstrap-markup-rails/components/form/select'
+    autoload :CheckBox                      , 'twitter-bootstrap-markup-rails/components/form/check_box'
+    autoload :FileField                     , 'twitter-bootstrap-markup-rails/components/form/file_field'
+    autoload :Button                        , 'twitter-bootstrap-markup-rails/components/form/button'
+    autoload :ControlGroup                  , 'twitter-bootstrap-markup-rails/components/form/control_group'
 
     include ActionView::Helpers::FormHelper
 

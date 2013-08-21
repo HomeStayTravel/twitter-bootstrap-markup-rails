@@ -43,6 +43,16 @@ module Twitter::Bootstrap::Markup::Rails::Components
       Form::FileField.new(object_name, method, element_html, options).to_s
     end
 
+    def telephone_with_country_code_field(method, country_codes, options = {})
+      country_code_method = "#{method}_country_code"
+      country_code_select = @template.select(object_name, country_code_method, country_codes, options.merge(include_blank: "Country Code")).to_s
+
+      telephone_number_method = "#{method}_number"
+      telephone_field = @template.telephone_field(object_name, telephone_number_method, options.except(:label, :label_text))
+      element_html = country_code_select + telephone_field
+      Form::InputField.new(object_name, method, element_html, options).to_s
+    end
+
     def button(value, options={})
       Form::Button.new(object_name, value, options.except(:label, :label_text)).to_s
     end
