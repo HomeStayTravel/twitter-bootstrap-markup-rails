@@ -49,7 +49,9 @@ module Twitter::Bootstrap::Markup::Rails::Components
 
       telephone_number_method = "#{method}_number"
 
-      phone_number = @template.instance_variable_get("@#{object_name}").send(telephone_number_method)
+      obj = @object || @template.instance_variable_get("@#{object_name}")
+      phone_number = obj.send(telephone_number_method)
+
       telephone_field = @template.telephone_field(object_name, telephone_number_method, options.except(:label, :label_text).merge(value: phone_number))
       element_html = country_code_select + telephone_field
       Form::InputField.new(object_name, method, element_html, options).to_s
