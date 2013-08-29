@@ -45,12 +45,16 @@ module Twitter::Bootstrap::Markup::Rails::Components
 
     def telephone_with_country_code_field(method, country_codes, options = {})
       country_code_method = "#{method}_country_code"
-      country_code_select = @template.select(object_name, country_code_method, country_codes, options.merge(include_blank: "Prefix"), {:class => 'telephone_field_country_code'}).to_s
+
+      obj = @object || @template.instance_variable_get("@#{object_name}")
+      country_code = obj.try(country_code_method)
+
+      country_code_select = @template.select(object_name, country_code_method, @template.options_for_select(country_codes, selected: country_code), options.merge(include_blank: "Prefix"), {:class => 'telephone_field_country_code'})
 
       telephone_number_method = "#{method}_number"
 
       obj = @object || @template.instance_variable_get("@#{object_name}")
-      phone_number = obj.send(telephone_number_method)
+      phone_number = obj.try(telephone_number_method)
 
       telephone_field = @template.telephone_field(object_name, telephone_number_method, options.except(:label, :label_text, :class).merge(:value => phone_number, :class => 'telephone_field_number'))
       element_html = @template.content_tag(:div, country_code_select + telephone_field, :class => "#{options[:class]} telephone_field_container")
